@@ -5,15 +5,21 @@ var myBasket = {
   price_checker: function(items){
     priceTally = 0
     for(item of items){
+      if(item.deal === true){
+        item.numberOf = (item.numberOf / 2)
+      }
       priceTally += (item.price * item.numberOf)
     }
     this.price = priceTally
+
     if(this.price > 20){
       this.price = this.price * 0.9
     }
+
     if(this.discountCard === true){
       this.price = this.price * 0.95
     }
+
   } 
 }
 
@@ -22,17 +28,11 @@ var testItem = {
   numberOf: 3
 }
 
-var firstItem = {
+var dealItem = {
   price: 5,
   deal: true,
-  numberOf: 0
-}
-
-var secondItem = {
-  price: 2,
-  deal: false,
-  numberOf: 0
+  numberOf: 2
 }
 
 
-module.exports = [myBasket, testItem]
+module.exports = [myBasket, testItem, dealItem]

@@ -1,5 +1,6 @@
 var basket = require('./shopping_basket')[0];
-var testItem = require('./shopping_basket')[1]
+var testItem = require('./shopping_basket')[1];
+var dealItem = require('./shopping_basket')[2];
 var assert = require('assert');
 
 describe('basket', function(){
@@ -24,5 +25,13 @@ describe('basket', function(){
     basket.price_checker(basket.items);
     assert.equal(24.3, basket.price);
     basket.items = [];
+  });
+
+  it('should recognise 2 for 1 deals', function(){
+    basket.items.push(dealItem);
+    basket.price_checker(basket.items);
+    assert.equal(5, basket.price);
+    basket.items = [];
+
   })
 })
