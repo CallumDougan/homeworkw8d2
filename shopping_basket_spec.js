@@ -7,5 +7,11 @@ describe('basket', function(){
     basket.items.push(testItem)
     basket.price_checker(basket.items);
     assert.equal(9, basket.price)
+  });
+
+  it('should apply discount card effects', function(){
+    basket.discountCard = true
+    basket.price_checker(basket.items);
+    assert.equal(8.549999999999999, basket.price)
   })
 })
