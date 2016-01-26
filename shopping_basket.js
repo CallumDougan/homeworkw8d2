@@ -8,6 +8,9 @@ var myBasket = {
       priceTally += (item.price * item.numberOf)
     }
     this.price = priceTally
+    if(this.price > 20){
+      this.price = this.price * 0.9
+    }
     if(this.discountCard === true){
       this.price = this.price * 0.95
     }

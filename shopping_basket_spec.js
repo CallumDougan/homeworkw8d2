@@ -4,14 +4,25 @@ var assert = require('assert');
 
 describe('basket', function(){
   it('should add prices together', function(){
-    basket.items.push(testItem)
+    basket.items.push(testItem);
     basket.price_checker(basket.items);
-    assert.equal(9, basket.price)
+    assert.equal(9, basket.price);
+    basket.items = [];
   });
 
   it('should apply discount card effects', function(){
-    basket.discountCard = true
+    basket.discountCard = true;
+    basket.items.push(testItem);
     basket.price_checker(basket.items);
-    assert.equal(8.549999999999999, basket.price)
+    assert.equal(8.549999999999999, basket.price);
+    basket.discountCard = false;
+    basket.items = [];
+  });
+
+  it('should apply >£20 discount', function(){
+    basket.items.push(testItem, testItem, testItem);
+    basket.price_checker(basket.items);
+    assert.equal(24.3, basket.price);
+    basket.items = [];
   })
 })
