@@ -32,6 +32,5 @@ describe('basket', function(){
     basket.price_checker(basket.items);
     assert.equal(5, basket.price);
     basket.items = [];
-
   })
 })
